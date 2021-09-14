@@ -8,7 +8,7 @@ import { BookReviewService } from 'src/app/services/book-review.service';
   templateUrl: './new-book.component.html',
   styleUrls: ['./new-book.component.css']
 })
-export class NewBookComponent implements OnInit {
+export class NewBookComponent {
   public books: Book[] = [];
   public form = this.fb.group({
     title: ['', [Validators.required]],
@@ -17,9 +17,6 @@ export class NewBookComponent implements OnInit {
   public jsonToggle: boolean = false;
 
   constructor(private fb: FormBuilder, private bookReviewService: BookReviewService) { }
-
-  ngOnInit(): void {
-  }
 
   public get title(): FormControl {
     return this.form.get('title') as FormControl;
@@ -37,9 +34,6 @@ export class NewBookComponent implements OnInit {
     };
     this.books.push(book);
     this.bookReviewService.books.push(book);
-    if (this.books === this.bookReviewService.books) {
-      console.log('wow')
-    }
   }
   public showJson(): void {
     this.jsonToggle = !this.jsonToggle;
