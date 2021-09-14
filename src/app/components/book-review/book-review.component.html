@@ -1,7 +1,9 @@
 <div class="container" *ngIf="bookReviewService.displayedBookIndex !== -1">
     <h1>{{ bookReviewService.books[bookReviewService.displayedBookIndex]?.title }} review</h1>
-    <div *ngFor="let review of bookReviewService.books[bookReviewService.displayedBookIndex]?.reviews"> 
+    <div *ngFor="let review of bookReviewService.books[bookReviewService.displayedBookIndex]?.reviews" class="review"> 
         <h1>{{review.email}}</h1>
+        <h3>{{review.note}}</h3>
+        <h3>{{review.stars}} / 5</h3>
     </div>
     <form [formGroup]="form" (ngSubmit)="submit()">
         <div>
