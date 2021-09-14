@@ -1,0 +1,21 @@
+<div class="container" *ngIf="bookReviewService.displayedBookIndex !== -1">
+    <h1>{{ bookReviewService.books[bookReviewService.displayedBookIndex]?.title }} review</h1>
+    <div *ngFor="let review of bookReviewService.books[bookReviewService.displayedBookIndex]?.reviews"> 
+        <h1>{{review.email}}</h1>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div>
+            <label for="email">Email: </label>
+            <input type="email" formControlName="email" id="email">
+        </div>
+        <div>
+            <label for="note">Note: </label>
+            <textarea cols="30" rows="10" formControlName="note" id="note"></textarea>
+        </div>
+        <div>
+            <label for="stars">Star: </label>
+            <input type="number" formControlName="stars" id="stars" min="1" max="5">
+        </div>
+        <button type="submit" [disabled]="!form.valid">Save</button>
+    </form>
+</div>

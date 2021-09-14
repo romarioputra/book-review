@@ -1,0 +1,6 @@
+<div class="container">
+    <div *ngFor="let book of books; let i = index" (click)="displayReview(i)" class="book">
+        <h1>{{ book.title }}</h1>
+        <h3>{{ book.year }}</h3>
+    </div>
+</div>
